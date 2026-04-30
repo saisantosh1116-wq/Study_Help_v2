@@ -100,6 +100,75 @@ const DEFAULT_DB = {
     ],
     resources: [
         // Add these within the resources array of your DEFAULT_DB
+    // --- START OF DRIVE RESOURCES ---
+    
+    // JAVA OOP (subj-oop)
+    { 
+        id: "res-oop-notes-1", 
+        subjectId: "subj-oop", 
+        title: "OOP Module 1 & 2 Comprehensive Notes", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+    { 
+        id: "res-oop-question-bank", 
+        subjectId: "subj-oop", 
+        title: "Java OOP Question Bank & PYQs", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+
+    // LINEAR ALGEBRA (subj-linear)
+    { 
+        id: "res-lin-notes-full", 
+        subjectId: "subj-linear", 
+        title: "Linear Algebra - All Units Detailed Notes", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+    { 
+        id: "res-lin-solved-problems", 
+        subjectId: "subj-linear", 
+        title: "Solved Problems: Eigenvalues & Transformations", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+
+    // DISCRETE MATHEMATICS (subj-math)
+    { 
+        id: "res-math-logic-set", 
+        subjectId: "subj-math", 
+        title: "Discrete Math: Logic, Sets & Proofs Notes", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+    { 
+        id: "res-math-graph-theory", 
+        subjectId: "subj-math", 
+        title: "Graph Theory & Optimization Module", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+
+    // MODERN PHYSICS (subj-physics)
+    { 
+        id: "res-phy-quantum-notes", 
+        subjectId: "subj-physics", 
+        title: "Modern Physics: Quantum & Relativity Notes", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+    { 
+        id: "res-phy-formula-sheet", 
+        subjectId: "subj-physics", 
+        title: "Physics Formula Sheet for End-Sem", 
+        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        type: "link" 
+    },
+    
+    // --- END OF DRIVE RESOURCES ---
+
+        
     { 
         id: "res-dm-mit", 
         subjectId: "subj-math", 
