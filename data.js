@@ -87,6 +87,45 @@ const DEFAULT_DB = {
         { id: "a_4", title: "Linear Algebra - Class Test", subjectId: "subj-linear", dueDate: "2026-05-11" }
     ],
     resources: [
+        // Add these within the resources array of your DEFAULT_DB
+    { 
+        id: "res-dm-mit", 
+        subjectId: "subj-math", 
+        title: "MIT 6.042J: Mathematics for Computer Science", 
+        url: "https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/", 
+        type: "link" 
+    },
+    { 
+        id: "res-dm-book", 
+        subjectId: "subj-math", 
+        title: "Discrete Mathematics: An Open Introduction", 
+        url: "https://discrete.openmathbooks.org/", 
+        type: "link" 
+    },
+    { 
+        id: "res-dm-bazett", 
+        subjectId: "subj-math", 
+        title: "Dr. Trefor Bazett: Discrete Math Full Course", 
+        url: "https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKk9", 
+        type: "link" 
+    },
+    { 
+        id: "res-dm-brehm", 
+        subjectId: "subj-math", 
+        title: "Kimberly Brehm: Discrete Math I & II", 
+        url: "https://www.youtube.com/playlist?list=PLl-gb0E4MII28GykmtuAfLiVV6_O6G82e", 
+        type: "link" 
+    },
+    { 
+        id: "res-dm-gfg", 
+        subjectId: "subj-math", 
+        title: "GeeksforGeeks Discrete Math Tutorial", 
+        url: "https://www.geeksforgeeks.org/discrete-mathematics-tutorial/", 
+        type: "link" 
+    }
+
+
+        
         { 
             id: "r_1", 
             subjectId: "subj-oop", 
