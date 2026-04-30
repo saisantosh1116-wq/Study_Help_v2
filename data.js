@@ -203,7 +203,8 @@ const DEFAULT_DB = {
         type: "link" 
     },
         
-        { 
+        { // HEYYYYYYYYYY, YOU !!!! Yes YOUU!! , HERE!!!!!!!! Change the link  your class link HERE !!!!!!!!!!!!!!!!!!!!!  
+        // Im taking a bow to you for trying to help others , All the best for your End Sem, you kind soul from another batch...
             id: "r_1", 
             subjectId: "subj-oop", 
             title: "Resources by Mam", 
@@ -211,20 +212,22 @@ const DEFAULT_DB = {
             type: "link" 
         },
         { 
+            // HEYYYYYYYYYY, YOU !!!! Yes YOUU!! , HERE!!!!!!!! Change the link  your class link HERE !!!!!!!!!!!!!!!!!!!!!  
+        // Im taking a bow to you for trying to help others , All the best for your End Sem, you kind soul from another batch
             id: "r_3", 
             subjectId: "subj-math", 
             title: "Official OneDrive Folder", 
             url: "https://amritauniv-my.sharepoint.com/personal/sreedeepcd_am_amrita_edu/_layouts/15/onedrive.aspx?csf=1&web=1&e=EeE9Ki&CID=138cc40e%2Dae0f%2D476a%2D9ae0%2D6c33c62a8e1c&id=%2Fpersonal%2Fsreedeepcd%5Fam%5Famrita%5Fedu%2FDocuments%2F25%5F26%5FDM%5F23MAT116%5FStudents&FolderCTID=0x0120009EC4F057CCB422449D6330491AFF2B72&view=0", 
             type: "link" 
         },
-        { 
+        { // Credits go to Nayantheerth from S2 CSE C for making this ADM textbook extracted version
             id: "r_5", 
             subjectId: "subj-adm", 
             title: "Additional Text Extraction", 
             url: "https://drive.google.com/drive/folders/1ofer5HDQoqTFGdOJD4WQWl_nRiiDHfZO", 
             type: "link" 
         },
-        // Add these within the resources array of your DEFAULT_DB
+        
     { 
         id: "res-java-helsinki", 
         subjectId: "subj-oop", 
