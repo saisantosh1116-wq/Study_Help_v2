@@ -88,19 +88,18 @@ const DEFAULT_DB = {
             courseCode: "22ADM111",
             examDate: "2026-05-30",
             syllabus: [
-                { id: "adm-all", title: "Chapter 1: Vision and Mission of IKS", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 2: Fear Chapter", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 3: Chanakya", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 4: Bhagavadgita - Soldier to...", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 5: Lessons in Yoga", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 6: Ultimate Reality: Different Perspectives", status: "pending", notes: "" },
-                
-                { id: "adm-all", title: "Chapter 7: Weaving a New Future usign Ancient threads", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 8: Legacy of Knowledge and Learning in India", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 9: Ayurveda", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 10 : Indian Calendar Systems", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 11: In the mirror of Culture ", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 12: Revisiting Indian Historiography", status: "pending", notes: "" }
+                { id: "adm-1", title: "Chapter 1: Vision and Mission of IKS", status: "pending", notes: "" },
+                { id: "adm-2", title: "Chapter 2: Fear Chapter", status: "pending", notes: "" },
+                { id: "adm-3", title: "Chapter 3: Chanakya", status: "pending", notes: "" },
+                { id: "adm-4", title: "Chapter 4: Bhagavadgita - Soldier to...", status: "pending", notes: "" },
+                { id: "adm-5", title: "Chapter 5: Lessons in Yoga", status: "pending", notes: "" },
+                { id: "adm-6", title: "Chapter 6: Ultimate Reality: Different Perspectives", status: "pending", notes: "" },
+                { id: "adm-7", title: "Chapter 7: Weaving a New Future using Ancient threads", status: "pending", notes: "" },
+                { id: "adm-8", title: "Chapter 8: Legacy of Knowledge and Learning in India", status: "pending", notes: "" },
+                { id: "adm-9", title: "Chapter 9: Ayurveda", status: "pending", notes: "" },
+                { id: "adm-10", title: "Chapter 10: Indian Calendar Systems", status: "pending", notes: "" },
+                { id: "adm-11", title: "Chapter 11: In the mirror of Culture", status: "pending", notes: "" },
+                { id: "adm-12", title: "Chapter 12: Revisiting Indian Historiography", status: "pending", notes: "" }
             ]
         }
     ],
