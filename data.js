@@ -1,0 +1,135 @@
+// --- data.js (S2 CSE C - Master Template) ---
+
+const DEFAULT_DB = {
+    globalReview: "Welcome to the S2 CSE C End-Semester Dashboard. Customize your own study plan and track your progress here.",
+    todos: [],
+    dailyChecklist: [],
+    subjects: [
+        {
+            id: "subj-oop",
+            name: "Object Oriented Programming (Java)",
+            courseCode: "23CSE111",
+            examDate: "2026-05-21",
+            syllabus: [
+                { id: "oop-1", title: "1. Intro to Java", status: "pending", notes: "" },
+                { id: "oop-2", title: "2. Class & Objects", status: "pending", notes: "" },
+                { id: "oop-3", title: "3. Constructors", status: "pending", notes: "" },
+                { id: "oop-4", title: "4. Static Members", status: "pending", notes: "" },
+                { id: "oop-5", title: "5. Scope of Variables", status: "pending", notes: "" },
+                { id: "oop-6", title: "6. Composition of Classes", status: "pending", notes: "" },
+                { id: "oop-7", title: "7. Inheritance (and 7.1 Types)", status: "pending", notes: "" },
+                { id: "oop-8", title: "8. Polymorphism", status: "pending", notes: "" },
+                { id: "oop-9", title: "9. Abstraction", status: "pending", notes: "" },
+                { id: "oop-10", title: "10. UML Diagrams", status: "pending", notes: "" },
+                { id: "oop-11", title: "11. Exception Handling", status: "pending", notes: "" },
+                { id: "oop-12", title: "12. File Handling", status: "pending", notes: "" }
+            ]
+        },
+        {
+            id: "subj-linear",
+            name: "Linear Algebra",
+            courseCode: "23MAT117",
+            examDate: "2026-06-04",
+            syllabus: [
+                { id: "lin-1", title: "Chapter 1: 1.1, 1.2", status: "pending", notes: "" },
+                { id: "lin-4", title: "Chapter 4: 4.1 to 4.9", status: "pending", notes: "" },
+                { id: "lin-5", title: "Chapter 5: 5.1, 5.2", status: "pending", notes: "" },
+                { id: "lin-6", title: "Chapter 6: 6.1 to 6.4", status: "pending", notes: "" },
+                { id: "lin-7", title: "Chapter 7: 7.1 (Orthogonal matrices), 7.2", status: "pending", notes: "" },
+                { id: "lin-8", title: "Chapter 8: 8.1 to 8.4", status: "pending", notes: "" }
+            ]
+        },
+        {
+            id: "subj-math",
+            name: "Discrete Mathematics",
+            courseCode: "23MAT116",
+            examDate: "2026-05-26",
+            syllabus: [
+                { id: "math-1a", title: "Unit 1: Logic (Equivalence, Predicate, Theorem Proving)", status: "pending", notes: "" },
+                { id: "math-1b", title: "Unit 1: Recursion (Definitions, Algorithms)", status: "pending", notes: "" },
+                { id: "math-1c", title: "Unit 1: Counting (Basics, Pigeonhole, Permutations/Combinations)", status: "pending", notes: "" },
+                { id: "math-2a", title: "Unit 2: Relations (Closure, Partial Ordering, Equivalence)", status: "pending", notes: "" },
+                { id: "math-2b", title: "Unit 2: Recurrence (Homogeneous, Divide/Conquer)", status: "pending", notes: "" },
+                { id: "math-2c", title: "Unit 2: Methods (Generating Functions, Inclusion-Exclusion)", status: "pending", notes: "" },
+                { id: "math-3a", title: "Unit 3: Graph Foundations (Isomorphism, Matrices, Degrees, Walks)", status: "pending", notes: "" },
+                { id: "math-3b", title: "Unit 3: Shortest Path, Euler, Hamilton Graphs", status: "pending", notes: "" },
+                { id: "math-3c", title: "Unit 3: Optimization (Chinese Postman, TSP approximations, Closest Neighbour)", status: "pending", notes: "" }
+            ]
+        },
+        {
+            id: "subj-physics",
+            name: "Modern Physics",
+            courseCode: "23PHY115",
+            examDate: "2026-06-02",
+            syllabus: [
+                { id: "phy-ch1", title: "Unit 1: Blackbody radiation, Compton/PE effect", status: "pending", notes: "" },
+                { id: "phy-ch2", title: "Unit 2: Atomic Models (Thomson, Bohr, Rutherford, Spectra, Correspondence)", status: "pending", notes: "" },
+                { id: "phy-ch3", title: "Unit 3: Quantum Mechanics (Schrödinger Equations)", status: "pending", notes: "" },
+                { id: "phy-ch4", title: "Unit 4: Applications of QM (Potential/Square wells, H.O.)", status: "pending", notes: "" },
+                { id: "phy-laser", title: "Unit 4: LASER (Spontaneous/Stimulated emission, Population inversion)", status: "pending", notes: "" },
+                { id: "phy-ch5", title: "Unit 5: Quantum Computing", status: "pending", notes: "" }
+            ]
+        },
+        {
+            id: "subj-adm",
+            name: "Glimpses of Glorious India",
+            courseCode: "22ADM111",
+            examDate: "2026-05-30",
+            syllabus: [
+                { id: "adm-all", title: "All 12 Chapters", status: "pending", notes: "" }
+            ]
+        }
+    ],
+    assignments: [
+        { id: "a_1", title: "Discrete Mathematics - Class Test", subjectId: "subj-math", dueDate: "2026-05-04" },
+        { id: "a_2", title: "Glimpses of Glorious India - MaOm", subjectId: "subj-adm", dueDate: "2026-05-06" },
+        { id: "a_3", title: "GGI - Rough Book Submission", subjectId: "subj-adm", dueDate: "2026-05-07" },
+        { id: "a_4", title: "Linear Algebra - Class Test", subjectId: "subj-linear", dueDate: "2026-05-11" }
+    ],
+    resources: [
+        { 
+            id: "r_1", 
+            subjectId: "subj-oop", 
+            title: "Resources by Mam", 
+            url: "https://amritauniv-my.sharepoint.com/personal/sunithaev_am_amrita_edu/SitePages/Object-Oriented-Programming-(23CSE111-,-23AID111).aspx?ga=1", 
+            type: "link" 
+        },
+        { 
+            id: "r_3", 
+            subjectId: "subj-math", 
+            title: "Official OneDrive Folder", 
+            url: "https://amritauniv-my.sharepoint.com/personal/sreedeepcd_am_amrita_edu/_layouts/15/onedrive.aspx?csf=1&web=1&e=EeE9Ki&CID=138cc40e%2Dae0f%2D476a%2D9ae0%2D6c33c62a8e1c&id=%2Fpersonal%2Fsreedeepcd%5Fam%5Famrita%5Fedu%2FDocuments%2F25%5F26%5FDM%5F23MAT116%5FStudents&FolderCTID=0x0120009EC4F057CCB422449D6330491AFF2B72&view=0", 
+            type: "link" 
+        },
+        { 
+            id: "r_5", 
+            subjectId: "subj-adm", 
+            title: "Additional Text Extraction", 
+            url: "https://drive.google.com/drive/folders/1ofer5HDQoqTFGdOJD4WQWl_nRiiDHfZO", 
+            type: "link" 
+        }
+    ]
+};
+
+const NexusDB = {
+    init() {
+        if (!localStorage.getItem('nexus_db')) {
+            localStorage.setItem('nexus_db', JSON.stringify(DEFAULT_DB));
+        }
+    },
+    get() {
+        return JSON.parse(localStorage.getItem('nexus_db'));
+    },
+    save(data) {
+        localStorage.setItem('nexus_db', JSON.stringify(data));
+    },
+    getDaysLeft(dateString) {
+        const targetDate = new Date(dateString);
+        const today = new Date();
+        const diffTime = targetDate - today;
+        return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    }
+};
+
+// Initialize DB immediately
+NexusDB.init();

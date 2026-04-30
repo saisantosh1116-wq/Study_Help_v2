@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nexus | Assignments</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="layout.css">
+    <script>
+        (function() {
+            // 1. Lock all transitions instantly
+            document.documentElement.classList.add('preload-theme');
+            // 2. Set the correct theme
+            const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <header class="top-nav">
+        <!-- Back link is now dynamic -->
+        <h1 class="nexus-brand"><a id="back-link" href="index.html">&larr; BACK TO NEXUS</a></h1>
+        <button id="theme-toggle" class="nexus-btn">Toggle Theme</button>
+    </header>
+
+    <main class="page-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <!-- Title is now dynamic -->
+            <h2 id="page-title">Active Assignments</h2>
+            <button class="nexus-btn accent-btn" onclick="openAddModal()">+ Add Assignment</button>
+        </div>
+        <div id="assignment-grid" class="assignments-grid"></div>
+    </main>
+
+    <!-- Modal with Hidden Edit ID -->
+    <div id="add-modal" class="modal-overlay">
+        <div class="nexus-card" style="width: 400px;">
+            <h3 id="modal-title">Add New Assignment</h3>
+            <div style="margin-top: 20px;">
+                <input type="hidden" id="edit-task-id">
+                <input type="text" id="task-title" placeholder="Assignment Title" class="nexus-input">
+                <input type="date" id="task-date" class="nexus-input">
+                <select id="task-subject" class="nexus-input"></select>
+                
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button class="nexus-btn" onclick="closeAddModal()">Cancel</button>
+                    <button class="nexus-btn accent-btn" onclick="saveAssignment()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="core.js"></script>
+    <script src="assignments.js"></script>
+</body>
+</html>

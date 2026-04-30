@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nexus | Dashboard</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="layout.css">
+    <script>
+        (function() {
+            // 1. Lock all transitions instantly
+            document.documentElement.classList.add('preload-theme');
+            // 2. Set the correct theme
+            const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <style>
+        .list-container {
+            display: flex; flex-direction: column; gap: 8px; 
+            max-height: 180px; overflow-y: auto; padding-right: 5px;
+        }
+        
+        .list-item {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.05); padding: 8px 12px; border-radius: 6px;
+            border-left: 3px solid var(--accent); transition: background 0.2s;
+        }
+        [data-theme="dark"] .list-item { background: rgba(255,255,255,0.05); }
+        .list-item:hover { background: rgba(0,0,0,0.1); }
+        [data-theme="dark"] .list-item:hover { background: rgba(255,255,255,0.1); }
+
+        .list-text { font-size: 0.9rem; flex-grow: 1; margin-left: 10px; cursor: pointer; }
+        .list-text.done { text-decoration: line-through; color: var(--text-secondary); opacity: 0.6; }
+        
+        .action-link { background: transparent; border: none; font-size: 0.85rem; font-weight: bold; cursor: pointer; padding: 0; }
+        .action-link:hover { text-decoration: underline; }
+
+        .delete-btn-simple { background: transparent; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.2rem; line-height: 1; }
+        .delete-btn-simple:hover { color: var(--danger); }
+
+        .mini-assignment {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; border-bottom: 1px solid var(--border);
+        }
+        .mini-assignment:last-child { border-bottom: none; }
+        
+        .list-container::-webkit-scrollbar { width: 4px; }
+        .list-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        
+        .manage-list-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px; border: 1px solid var(--border); border-radius: 8px;
+            background: rgba(0,0,0,0.02);
+        }
+        [data-theme="dark"] .manage-list-item { background: rgba(255,255,255,0.02); }
+    </style>
+</head>
+<body>
+    <header class="top-nav">
+        <h1 class="nexus-brand">PROJECT NEXUS</h1>
+        <button id="theme-toggle" class="nexus-btn">Toggle Theme</button>
+    </header>
+
+    <main class="page-container home-grid">
+        <!-- Subjects Grid -->
+        <section class="subjects-section" id="subject-grid-container">
+            <!-- Subjects injected by JS -->
+        </section>
+
+        <!-- Center Countdown -->
+        <section class="center-section">
+            <div class="nexus-card countdown-card">
+                <h3>Next Exam In</h3>
+                <div style="width: 150px; height: 150px; border-radius: 50%; border: 8px solid var(--border); border-top-color: var(--accent); display: flex; align-items: center; justify-content: center; margin-top: 20px;">
+                    <span id="global-countdown" style="font-size: 2.5rem; font-weight: bold; color: var(--accent);">--</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCK 1: To-Do & Daily Checklist -->
+        <section class="nexus-card" style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <h3 style="margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 8px;">To-Do List</h3>
+                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                    <input type="text" id="new-todo-input" class="nexus-input" style="margin: 0;" placeholder="Add a task...">
+                    <button class="nexus-btn accent-btn" onclick="addListItem('todos', 'new-todo-input')" style="padding: 0 15px;">+</button>
+                </div>
+                <div class="list-container" id="todo-list"></div>
+            </div>
+
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <h3 style="margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 8px;">Daily Checklist</h3>
+                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                    <input type="text" id="new-check-input" class="nexus-input" style="margin: 0;" placeholder="Add daily habit...">
+                    <button class="nexus-btn accent-btn" onclick="addListItem('dailyChecklist', 'new-check-input')" style="padding: 0 15px;">+</button>
+                </div>
+                <div class="list-container" id="checklist-list"></div>
+            </div>
+        </section>
+        
+        <!-- BLOCK 2: Upcoming Assignments Overview -->
+        <section class="nexus-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 10px;">
+                    <h3 style="margin: 0;">Assignments</h3>
+                    <button class="nexus-btn accent-btn" onclick="openAddModal()" style="padding: 2px 10px; font-size: 0.8rem;">+ Add</button>
+                </div>
+                <div id="mini-assignments-list" style="display: flex; flex-direction: column; gap: 5px;"></div>
+            </div>
+            
+            <a href="assignments.html" class="nexus-btn" style="text-align: center; text-decoration: none; margin-top: 15px; display: block;">
+                View All Assignments &rarr;
+            </a>
+        </section>
+
+        <!-- Global Review Footer -->
+        <section class="nexus-card global-review">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;">Global Review / Note to self</h3>
+                <button class="nexus-btn accent-btn" onclick="saveGlobalNote()" style="padding: 5px 15px; font-size: 0.9rem;">Save Note</button>
+            </div>
+            <textarea id="global-note" placeholder="Jot down overall exam strategies, daily goals, or cross-subject notes here..."></textarea>
+        </section>
+    </main>
+
+    <!-- Modal: Add Assignment -->
+    <div id="add-modal" class="modal-overlay">
+        <div class="nexus-card" style="width: 400px;">
+            <h3>Quick Add Assignment</h3>
+            <div style="margin-top: 20px;">
+                <input type="text" id="task-title" placeholder="Assignment Title" class="nexus-input">
+                <input type="date" id="task-date" class="nexus-input">
+                <select id="task-subject" class="nexus-input"></select>
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button class="nexus-btn" onclick="closeAddModal()">Cancel</button>
+                    <button class="nexus-btn accent-btn" onclick="saveAssignment()">Save Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW Modal: Manage Subjects Master Hub -->
+    <div id="manage-subjects-modal" class="modal-overlay">
+        <div class="nexus-card" style="width: 550px; max-height: 85vh; display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 15px;">
+                <h2 style="margin: 0;">Manage Subjects</h2>
+                <button class="nexus-btn accent-btn" onclick="openSubjectForm()" style="padding: 5px 15px; font-size: 0.9rem;">+ New Subject</button>
+            </div>
+            
+            <div id="manage-subjects-list" style="overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 5px; flex-grow: 1;">
+                <!-- Subject rows injected by JS -->
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                <button class="nexus-btn" onclick="closeManageSubjectsModal()">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Subject Form (Used for both Create and Edit) -->
+    <div id="subject-form-modal" class="modal-overlay" style="z-index: 1050;">
+        <div class="nexus-card" style="width: 400px;">
+            <h3 id="subject-form-title">Create New Subject</h3>
+            <div style="margin-top: 20px;">
+                <input type="hidden" id="edit-sub-id">
+                <input type="text" id="new-sub-name" placeholder="Subject Name (e.g., Computer Networks)" class="nexus-input">
+                <input type="text" id="new-sub-code" placeholder="Course Code (e.g., 23CSE211)" class="nexus-input">
+                <label style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px; display:block;">Target Exam Date:</label>
+                <input type="date" id="new-sub-date" class="nexus-input">
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button class="nexus-btn" onclick="closeSubjectForm()">Cancel</button>
+                    <button class="nexus-btn accent-btn" onclick="saveSubject()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            patchDatabase();
+            renderDashboard();
+        });
+
+        function patchDatabase() {
+            const db = NexusDB.get();
+            let needsSave = false;
+            if (!db.todos) { db.todos = []; needsSave = true; }
+            if (!db.dailyChecklist) { db.dailyChecklist = []; needsSave = true; }
+            if (needsSave) NexusDB.save(db);
+        }
+
+        function renderDashboard() {
+            const db = NexusDB.get();
+            const grid = document.getElementById('subject-grid-container');
+            grid.innerHTML = '';
+            
+            // Clean Subject Cards (No inline delete button)
+            db.subjects.forEach(sub => {
+                grid.innerHTML += `<a href="subject.html?id=${sub.id}" class="nexus-card subject-card">${sub.name}</a>`;
+            });
+            
+            // The cleanly styled "Manage" button
+            grid.innerHTML += `<button onclick="openManageSubjectsModal()" class="nexus-card subject-card" style="background: transparent; border: 2px dashed var(--border); cursor: pointer; color: var(--text-secondary);">Manage Subjects</button>`;
+
+            document.getElementById('global-note').value = db.globalReview || "";
+            const futureExams = db.subjects.map(s => NexusDB.getDaysLeft(s.examDate)).filter(d => d >= 0);
+            if(futureExams.length > 0) {
+                document.getElementById('global-countdown').innerText = Math.min(...futureExams);
+            } else {
+                document.getElementById('global-countdown').innerText = "--";
+            }
+
+            populateSubjectDropdown();
+            renderLists();
+            renderMiniAssignments();
+        }
+
+        // --- NEW: Centralized Manage Subjects Logic ---
+        function openManageSubjectsModal() {
+            renderManageSubjectsList();
+            document.getElementById('manage-subjects-modal').style.display = 'flex';
+        }
+
+        function closeManageSubjectsModal() {
+            document.getElementById('manage-subjects-modal').style.display = 'none';
+        }
+
+        function renderManageSubjectsList() {
+            const db = NexusDB.get();
+            const list = document.getElementById('manage-subjects-list');
+            list.innerHTML = '';
+
+            if (db.subjects.length === 0) {
+                list.innerHTML = `<span style="color: var(--text-secondary); text-align: center; margin-top: 20px;">No subjects found. Create one to get started.</span>`;
+                return;
+            }
+
+            db.subjects.forEach(sub => {
+                const daysLeft = NexusDB.getDaysLeft(sub.examDate);
+                list.innerHTML += `
+                    <div class="manage-list-item">
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.05rem;">${sub.name}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">Exam in ${daysLeft} days &bull; Code: ${sub.courseCode || 'N/A'}</div>
+                        </div>
+                        <div style="display: flex; gap: 15px;">
+                            <button class="action-link" style="color: var(--accent);" onclick="openSubjectForm('${sub.id}')">Edit</button>
+                            <button class="action-link" style="color: var(--danger);" onclick="deleteSubject('${sub.id}')">Delete</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openSubjectForm(editId = null) {
+            const title = document.getElementById('subject-form-title');
+            document.getElementById('edit-sub-id').value = '';
+            document.getElementById('new-sub-name').value = '';
+            document.getElementById('new-sub-code').value = '';
+            document.getElementById('new-sub-date').value = '';
+
+            if (editId) {
+                title.innerText = "Edit Subject";
+                const db = NexusDB.get();
+                const sub = db.subjects.find(s => s.id === editId);
+                if (sub) {
+                    document.getElementById('edit-sub-id').value = sub.id;
+                    document.getElementById('new-sub-name').value = sub.name;
+                    document.getElementById('new-sub-code').value = sub.courseCode || '';
+                    document.getElementById('new-sub-date').value = sub.examDate;
+                }
+            } else {
+                title.innerText = "Create New Subject";
+            }
+
+            document.getElementById('subject-form-modal').style.display = 'flex';
+        }
+
+        function closeSubjectForm() { 
+            document.getElementById('subject-form-modal').style.display = 'none'; 
+        }
+
+        function saveSubject() {
+            const id = document.getElementById('edit-sub-id').value;
+            const name = document.getElementById('new-sub-name').value;
+            const code = document.getElementById('new-sub-code').value;
+            const date = document.getElementById('new-sub-date').value;
+
+            if (!name || !date) return alert("Subject Name and Exam Date are strictly required.");
+
+            const db = NexusDB.get();
+
+            if (id) {
+                // Update Existing
+                const sub = db.subjects.find(s => s.id === id);
+                if (sub) {
+                    sub.name = name;
+                    sub.courseCode = code;
+                    sub.examDate = date;
+                }
+            } else {
+                // Create New
+                db.subjects.push({
+                    id: 'subj_' + Date.now(),
+                    name: name,
+                    courseCode: code || "N/A",
+                    examDate: date,
+                    syllabus: [] 
+                });
+            }
+            
+            NexusDB.save(db);
+            closeSubjectForm();
+            
+            // Re-render both the dashboard grid and the open manage list
+            renderManageSubjectsList();
+            renderDashboard(); 
+        }
+
+        function deleteSubject(subjectId) {
+            if (!confirm("Are you sure you want to delete this subject? This will permanently remove its syllabus, resources, and all tied assignments.")) return;
+
+            const db = NexusDB.get();
+            db.subjects = db.subjects.filter(s => s.id !== subjectId);
+            
+            if (db.assignments) {
+                db.assignments = db.assignments.filter(a => a.subjectId !== subjectId);
+            }
+            if (db.resources) {
+                db.resources = db.resources.filter(r => r.subjectId !== subjectId);
+            }
+
+            NexusDB.save(db);
+            renderManageSubjectsList(); // Update the modal view instantly
+            renderDashboard();          // Update the background grid instantly
+        }
+
+        // --- Standard Dashboard Logic ---
+        function renderLists() {
+            const db = NexusDB.get();
+            const todoContainer = document.getElementById('todo-list');
+            const checkContainer = document.getElementById('checklist-list');
+            
+            todoContainer.innerHTML = '';
+            checkContainer.innerHTML = '';
+
+            const createHTML = (item, type) => `
+                <div class="list-item" style="border-left-color: ${item.done ? 'var(--text-secondary)' : 'var(--accent)'}">
+                    <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleListItem('${type}', '${item.id}')" style="cursor: pointer; accent-color: var(--accent);">
+                    <span class="list-text ${item.done ? 'done' : ''}" onclick="toggleListItem('${type}', '${item.id}')">${item.text}</span>
+                    <button class="delete-btn-simple" onclick="deleteListItem('${type}', '${item.id}')">&times;</button>
+                </div>
+            `;
+
+            db.todos.forEach(item => todoContainer.innerHTML += createHTML(item, 'todos'));
+            db.dailyChecklist.forEach(item => checkContainer.innerHTML += createHTML(item, 'dailyChecklist'));
+        }
+
+        function addListItem(type, inputId) {
+            const input = document.getElementById(inputId);
+            const text = input.value.trim();
+            if (!text) return;
+
+            const db = NexusDB.get();
+            db[type].push({ id: 'l_' + Date.now(), text: text, done: false });
+            NexusDB.save(db);
+            
+            input.value = '';
+            renderLists();
+        }
+
+        function toggleListItem(type, itemId) {
+            const db = NexusDB.get();
+            const item = db[type].find(i => i.id === itemId);
+            if (item) item.done = !item.done;
+            NexusDB.save(db);
+            renderLists();
+        }
+
+        function deleteListItem(type, itemId) {
+            const db = NexusDB.get();
+            db[type] = db[type].filter(i => i.id !== itemId);
+            NexusDB.save(db);
+            renderLists();
+        }
+
+        function renderMiniAssignments() {
+            const db = NexusDB.get();
+            const container = document.getElementById('mini-assignments-list');
+            container.innerHTML = '';
+
+            const sorted = db.assignments
+                .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
+                .filter(a => NexusDB.getDaysLeft(a.dueDate) >= 0)
+                .slice(0, 4);
+
+            if (sorted.length === 0) {
+                container.innerHTML = `<span style="color: var(--text-secondary); font-size: 0.9rem;">No upcoming assignments.</span>`;
+                return;
+            }
+
+            sorted.forEach(task => {
+                const daysLeft = NexusDB.getDaysLeft(task.dueDate);
+                let color = 'var(--accent)';
+                if (daysLeft <= 3) color = 'var(--warning)';
+                if (daysLeft === 0) color = 'var(--danger)';
+
+                container.innerHTML += `
+                    <div class="mini-assignment">
+                        <span style="font-size: 0.9rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;">${task.title}</span>
+                        <span style="color: ${color}; font-size: 0.85rem; font-weight: bold;">${daysLeft}d left</span>
+                    </div>
+                `;
+            });
+        }
+
+        function saveGlobalNote() {
+            const db = NexusDB.get();
+            db.globalReview = document.getElementById('global-note').value;
+            NexusDB.save(db);
+            alert("Global note saved.");
+        }
+
+        function populateSubjectDropdown() {
+            const select = document.getElementById('task-subject');
+            select.innerHTML = '<option value="none" style="color: black;">General (No Subject)</option>';
+            NexusDB.get().subjects.forEach(sub => {
+                select.innerHTML += `<option value="${sub.id}" style="color: black;">${sub.name}</option>`;
+            });
+        }
+
+        function openAddModal() { document.getElementById('add-modal').style.display = 'flex'; }
+        function closeAddModal() { 
+            document.getElementById('add-modal').style.display = 'none'; 
+            document.getElementById('task-title').value = ''; 
+            document.getElementById('task-date').value = ''; 
+        }
+
+        function saveAssignment() {
+            const title = document.getElementById('task-title').value;
+            const date = document.getElementById('task-date').value;
+            const subj = document.getElementById('task-subject').value;
+
+            if (!title || !date) return alert("Title and date required.");
+
+            const db = NexusDB.get();
+            db.assignments.push({ id: 'a_' + Date.now(), title, subjectId: subj, dueDate: date });
+            NexusDB.save(db);
+            
+            closeAddModal();
+            renderDashboard(); 
+        }
+    </script>
+</body>
+</html>

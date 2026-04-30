@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nexus | Subject View</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="layout.css">
+    <script>
+        (function() {
+            // 1. Lock all transitions instantly
+            document.documentElement.classList.add('preload-theme');
+            // 2. Set the correct theme
+            const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <header class="top-nav">
+        <h1 class="nexus-brand"><a href="index.html">&larr; BACK TO NEXUS</a></h1>
+        <button id="theme-toggle" class="nexus-btn">Toggle Theme</button>
+    </header>
+
+    <main class="page-container">
+        <div class="nexus-card" style="margin-bottom: 24px; text-align: center; border-color: var(--accent);">
+            <h1 id="sub-title" style="margin: 0; color: var(--accent);">Loading...</h1>
+        </div>
+
+        <!-- UPDATED GRID: 4 Columns to fit the new Assignments Hub -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1.2fr; gap: 24px;">
+            <a id="link-syllabus" href="#" class="nexus-card subject-card" style="flex-direction: column;">
+                <h2>Syllabus</h2>
+                <span style="color: var(--text-secondary); font-size: 0.9rem;">Manage Modules</span>
+            </a>
+            <a id="link-resources" href="#" class="nexus-card subject-card" style="flex-direction: column;">
+                <h2>Resources</h2>
+                <span style="color: var(--text-secondary); font-size: 0.9rem;">Files & PYQs</span>
+            </a>
+            <a id="link-assignments" href="#" class="nexus-card subject-card" style="flex-direction: column;">
+                <h2>Assignments</h2>
+                <span style="color: var(--text-secondary); font-size: 0.9rem;">Subject Deadlines</span>
+            </a>
+            <div class="nexus-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <h3>Days to Exam</h3>
+                <div style="font-size: 4rem; font-weight: bold; color: var(--warning);" id="exam-countdown">--</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="core.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subjectId = urlParams.get('id');
+            const db = NexusDB.get();
+            
+            const subjectData = db.subjects.find(s => s.id === subjectId);
+            
+            if(subjectData) {
+                document.getElementById('sub-title').innerText = subjectData.name;
+                document.getElementById('exam-countdown').innerText = NexusDB.getDaysLeft(subjectData.examDate);
+                
+                // Route the buttons dynamically
+                document.getElementById('link-syllabus').href = `syllabus.html?id=${subjectId}`;
+                document.getElementById('link-resources').href = `resources.html?id=${subjectId}`;
+                document.getElementById('link-assignments').href = `assignments.html?id=${subjectId}`;
+            } else {
+                document.getElementById('sub-title').innerText = "Subject Not Found";
+            }
+        });
+    </script>
+</body>
+</html>

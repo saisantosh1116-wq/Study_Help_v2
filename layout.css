@@ -1,0 +1,46 @@
+/* layout.css */
+.page-container { max-width: 1400px; margin: 0 auto; padding: 0 40px 40px 40px; }
+
+/* Home Grid */
+.home-grid {
+    display: grid;
+    grid-template-columns: 2.5fr 1.5fr 1fr 1fr; 
+    gap: 24px;
+}
+
+.subjects-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.subject-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.center-section { display: flex; flex-direction: column; gap: 24px; }
+.countdown-card { flex: 1.5; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.links-card { flex: 1; }
+
+.quick-links-list { list-style: none; padding: 0; margin: 0; }
+.quick-links-list li { margin-bottom: 12px; }
+.quick-links-list a { color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+.quick-links-list a:hover { color: var(--accent); }
+
+.graph-card { text-align: center; }
+.global-review { grid-column: 1 / -1; }
+.global-review textarea {
+    width: 100%; min-height: 100px; background: transparent; border: none;
+    color: var(--text-primary); font-family: inherit; font-size: 1rem; resize: vertical; outline: none;
+}
+
+/* Assignments Grid */
+.assignments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }

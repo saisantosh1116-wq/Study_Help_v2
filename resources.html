@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nexus | Resources</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="layout.css">
+    <head>
+    <!-- Your existing meta and link tags... -->
+    <script>
+        (function() {
+            // 1. Lock all transitions instantly
+            document.documentElement.classList.add('preload-theme');
+            // 2. Set the correct theme
+            const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <!-- FIX: Anti-Flashbang Theme Initializer -->
+    
+</head>
+    <style>
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 0.8fr;
+            gap: 24px;
+            margin-bottom: 24px;
+            align-items: stretch;
+        }
+
+        .resource-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .resource-item {
+            background: rgba(0,0,0,0.1);
+            border-left: 3px solid var(--accent);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        [data-theme="dark"] .resource-item { background: rgba(255,255,255,0.05); }
+        .resource-item:hover { background: rgba(0,0,0,0.15); }
+        [data-theme="dark"] .resource-item:hover { background: rgba(255,255,255,0.1); }
+
+        .resource-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .resource-link:hover { color: var(--accent); text-decoration: underline; }
+
+        .delete-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .delete-btn:hover { color: var(--danger); }
+    </style>
+</head>
+<body>
+    <header class="top-nav">
+        <h1 class="nexus-brand"><a id="back-link" href="index.html">⬅ BACK TO SUBJECT</a></h1>
+        <button id="theme-toggle" class="nexus-btn">Toggle Theme</button>
+    </header>
+
+    <main class="page-container">
+        <div class="nexus-card" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent);">
+            <h1 id="subject-title" style="margin: 0; color: var(--accent);">Loading Resources...</h1>
+            <button class="nexus-btn accent-btn" onclick="openResourceModal()">+ Add Resource</button>
+        </div>
+
+        <div class="resources-grid">
+            <!-- Column 1: Files -->
+            <div class="nexus-card resource-column">
+                <h3 style="margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">📁 Files & Docs</h3>
+                <div id="list-files" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+
+            <!-- Column 2: Links -->
+            <div class="nexus-card resource-column">
+                <h3 style="margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">🔗 Web Links</h3>
+                <div id="list-links" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+
+            <!-- Column 3: PYQs -->
+            <div class="nexus-card resource-column">
+                <h3 style="margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">📜 PYQs</h3>
+                <div id="list-pyqs" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+
+            <!-- Column 4: Metrics / Graph -->
+            <div class="nexus-card" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <h3 style="margin-top: 0;">Days to Exam</h3>
+                <div id="exam-countdown" style="font-size: 4rem; font-weight: bold; color: var(--warning); margin: 20px 0;">--</div>
+                <div style="width: 100%; height: 100px; border-bottom: 2px solid var(--border); border-left: 2px solid var(--border); display: flex; align-items: flex-end; justify-content: space-around; padding-top: 20px;">
+                    <!-- Placeholder for the bar graph in your wireframe -->
+                    <div style="width: 20px; height: 40%; background: var(--accent); opacity: 0.5;"></div>
+                    <div style="width: 20px; height: 70%; background: var(--accent); opacity: 0.8;"></div>
+                    <div style="width: 20px; height: 90%; background: var(--warning);"></div>
+                </div>
+                <span style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 10px;">Activity Graph</span>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="nexus-card global-review">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;">Subject Notes & Strategy</h3>
+                <button class="nexus-btn accent-btn" onclick="saveSubjectNote()" style="padding: 5px 15px; font-size: 0.9rem;">Save Note</button>
+            </div>
+            <textarea id="subject-note" placeholder="Jot down specific study strategies or reminders for this subject here..."></textarea>
+        </div>
+    </main>
+
+    <!-- Add Resource Modal -->
+    <div id="resource-modal" class="modal-overlay">
+        <div class="nexus-card" style="width: 400px;">
+            <h3>Add New Resource</h3>
+            <div style="margin-top: 20px;">
+                <input type="text" id="res-title" placeholder="Resource Title (e.g., Chapter 1 PDF)" class="nexus-input">
+                <input type="text" id="res-url" placeholder="URL or File Path" class="nexus-input">
+                <select id="res-type" class="nexus-input">
+                    <option value="file" style="color: black;">File / Document</option>
+                    <option value="link" style="color: black;">Web Link</option>
+                    <option value="pyq" style="color: black;">Previous Year Question (PYQ)</option>
+                </select>
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button class="nexus-btn" onclick="closeResourceModal()">Cancel</button>
+                    <button class="nexus-btn accent-btn" onclick="saveResource()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="core.js"></script>
+    <script src="resources.js"></script>
+</body>
+</html>

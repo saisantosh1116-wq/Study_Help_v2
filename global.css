@@ -1,0 +1,167 @@
+/* --- global.css --- */
+/* Placed at the very top of global.css */
+.preload-theme, .preload-theme * {
+    transition: none !important;
+}
+
+:root {
+    /* LIGHT MODE: True Glassmorphism with Custom Image */
+    --bg-image: url('background.jpg'); /* REPLACE with your image filename */
+    --bg-base: #e2e8f0; 
+    
+    /* True Frosted Glass: High transparency, high blur */
+    --surface: rgba(255, 255, 255, 0.25); 
+    --border: rgba(255, 255, 255, 0.4); 
+    
+    /* Crisp dark text to contrast with the glass */
+    --text-primary: #0f172a; 
+    --text-secondary: #334155; 
+    
+    /* Professional Blue Accent */
+    --accent: #2563eb; 
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    
+    /* Neutral shadow to make the glass float */
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.5);
+    --blur: blur(20px); 
+
+    /* Dynamic Overlays & Inputs for Contrast */
+    --modal-overlay: rgba(255, 255, 255, 0.3); /* Bright frosted glass overlay */
+    --input-bg: rgba(255, 255, 255, 0.5); /* Solidified input background */
+}
+
+[data-theme="dark"] {
+    /* DARK MODE: Sleek Knight / Cyberpunk */
+    --bg-image: none; /* Ensures the image disappears in Dark Mode */
+    --bg-base: #09090b; 
+    --surface: rgba(15, 15, 18, 0.7); 
+    --border: rgba(0, 240, 255, 0.15); 
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #00f0ff; 
+    --danger: #ff003c;
+    --warning: #ffb800;
+    --shadow: 0 8px 32px rgba(0, 240, 255, 0.05);
+    --blur: blur(20px);
+
+    /* Dynamic Overlays & Inputs for Contrast */
+    --modal-overlay: rgba(0, 0, 0, 0.8); /* Pitch black overlay */
+    --input-bg: rgba(255, 255, 255, 0.05); /* Sheer dark input */
+}
+
+body {
+    background-color: var(--bg-base);
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps image static while scrolling */
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: background-color 0.5s ease, background-image 0.5s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* --- Global Utilities & Navigation --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.nexus-brand { 
+    margin: 0; 
+    font-size: 1.5rem; 
+    letter-spacing: 2px; 
+}
+
+.nexus-brand a { 
+    color: inherit; 
+    text-decoration: none; 
+}
+
+/* --- Buttons --- */
+.nexus-btn {
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.nexus-btn:hover { 
+    border-color: var(--accent); 
+    box-shadow: var(--shadow); 
+}
+
+.nexus-btn.accent-btn { 
+    border-color: var(--accent); 
+    color: var(--accent); 
+}
+
+.nexus-btn.accent-btn:hover { 
+    background: var(--accent); 
+    color: var(--bg-base); 
+}
+
+/* --- The Glass Engine (Cards) --- */
+.nexus-card {
+    background: var(--surface);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: 16px; 
+    padding: 24px;
+    /* SICK 3D Animation on Hover */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.nexus-card:hover { 
+    border-color: var(--accent); 
+    transform: translateY(-6px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Ensure Dark Mode hover effects remain strictly Cyberpunk */
+[data-theme="dark"] .nexus-card:hover {
+    box-shadow: 0 15px 50px rgba(0, 240, 255, 0.15);
+}
+
+/* --- Forms & Modals --- */
+.nexus-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nexus-input:focus { 
+    outline: none; 
+    border-color: var(--accent); 
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.1);
+}
+
+.modal-overlay {
+    position: fixed; 
+    inset: 0; 
+    background: var(--modal-overlay);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000; 
+    align-items: center; 
+    justify-content: center; 
+    display: none;
+}   

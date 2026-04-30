@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nexus | Syllabus</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="layout.css">
+    
+    <!-- Your existing meta and link tags... -->
+    
+    <!-- FIX: Anti-Flashbang Theme Initializer -->
+   
+    <script>
+        (function() {
+            // 1. Lock all transitions instantly
+            document.documentElement.classList.add('preload-theme');
+            // 2. Set the correct theme
+            const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <style>
+        .syllabus-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+        
+        .topic-card {
+            display: flex;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .topic-controls {
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .topic-notes { flex: 1.5; padding: 20px; }
+        .topic-notes textarea {
+            width: 100%; height: 100%; background: transparent; border: none;
+            color: var(--text-primary); font-family: inherit; resize: none; outline: none;
+        }
+
+        .status-label {
+            display: flex; align-items: center; gap: 8px; cursor: pointer;
+            font-size: 0.9rem; color: var(--text-secondary); padding: 6px 10px;
+            border-radius: 6px; transition: all 0.2s; border: 1px solid transparent;
+        }
+        .status-label:hover { background: rgba(255,255,255,0.05); }
+        input[type="radio"] { accent-color: var(--accent); cursor: pointer; }
+
+        /* --- FIXED: Flawless Progress Ring --- */
+        .progress-ring-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            /* The gradient handles both the empty track and the filled progress */
+            background: conic-gradient(var(--accent) 0%, rgba(255,255,255,0.1) 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+        [data-theme="light"] .progress-ring-container {
+            background: conic-gradient(var(--accent) 0%, rgba(0,0,0,0.1) 0%);
+        }
+        
+        .progress-ring-inner {
+            width: 140px; /* Creates a perfect 10px border width */
+            height: 140px;
+            background: var(--bg-base); /* Masks the center */
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Utility for Edit/Delete buttons inside topics */
+        .topic-actions { display: flex; gap: 10px; margin-top: auto; padding-top: 15px; }
+        .action-link { background: none; border: none; font-size: 0.8rem; font-weight: bold; cursor: pointer; padding: 0; }
+    </style>
+</head>
+<body>
+    <header class="top-nav">
+        <h1 class="nexus-brand"><a id="back-link" href="index.html">⬅ BACK TO SUBJECT</a></h1>
+        <button id="theme-toggle" class="nexus-btn">Toggle Theme</button>
+    </header>
+
+    <main class="page-container">
+        <div class="nexus-card" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent);">
+            <h1 id="subject-title" style="margin: 0; color: var(--accent);">Loading Syllabus...</h1>
+            <button class="nexus-btn accent-btn" onclick="openSyllabusModal()">+ Add Topic</button>
+        </div>
+
+        <div class="syllabus-grid">
+            <div id="topics-container">
+                <!-- Topics injected by JS -->
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+                <div class="nexus-card" style="text-align: center;">
+                    <h3>Days to Exam</h3>
+                    <div id="exam-countdown" style="font-size: 4rem; font-weight: bold; color: var(--warning);">--</div>
+                </div>
+
+                <div class="nexus-card" style="text-align: center;">
+                    <h3>Syllabus Completion</h3>
+                    <div class="progress-ring-container" id="progress-ring">
+                        <div class="progress-ring-inner">
+                            <span id="progress-text" style="font-size: 2rem; font-weight: bold; color: var(--accent);">0%</span>
+                        </div>
+                    </div>
+                    <div style="color: var(--text-secondary); margin-top: 10px;">
+                        <span id="topics-completed-count">0</span> / <span id="topics-total-count">0</span> Topics Done
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Syllabus Add/Edit Modal -->
+    <div id="syllabus-modal" class="modal-overlay">
+        <div class="nexus-card" style="width: 400px;">
+            <h3 id="modal-title">Add New Topic</h3>
+            <div style="margin-top: 20px;">
+                <input type="hidden" id="edit-topic-id">
+                <input type="text" id="topic-title" placeholder="e.g., Module 5: Graph Theory" class="nexus-input">
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button class="nexus-btn" onclick="closeSyllabusModal()">Cancel</button>
+                    <button class="nexus-btn accent-btn" onclick="saveTopic()">Save Topic</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="core.js"></script>
+    <script src="syllabus.js"></script>
+</body>
+</html>
