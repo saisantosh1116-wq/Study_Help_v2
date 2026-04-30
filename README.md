@@ -11,7 +11,7 @@ Hey guys, I made this thinking it might help for End Sem, and also because of ho
 Again . Hope this helps to atleast 1 of you ( More would be better) 
 All The best 
 
-= Credits to Nayantheerth for ADM extraction 
-
+-Thank You
 ~Sai Santhosh Koppula 
 
+@ Credits to Nayantheerth for ADM extraction 
