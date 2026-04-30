@@ -122,7 +122,37 @@ const DEFAULT_DB = {
         title: "GeeksforGeeks Discrete Math Tutorial", 
         url: "https://www.geeksforgeeks.org/discrete-mathematics-tutorial/", 
         type: "link" 
-    }
+    },
+
+        // Add these within the resources array of your DEFAULT_DB
+    { 
+        id: "res-la-3b1b", 
+        subjectId: "subj-linear", 
+        title: "3Blue1Brown: Essence of Linear Algebra", 
+        url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MfeQ2lzNVdqzBWDXle6", 
+        type: "link" 
+    },
+    { 
+        id: "res-la-strang", 
+        subjectId: "subj-linear", 
+        title: "Gilbert Strang: MIT 18.06 Linear Algebra", 
+        url: "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/", 
+        type: "link" 
+    },
+    { 
+        id: "res-la-axler", 
+        subjectId: "subj-linear", 
+        title: "Sheldon Axler: Linear Algebra Done Right", 
+        url: "https://linear.axler.net/", 
+        type: "link" 
+    },
+    { 
+        id: "res-la-austin", 
+        subjectId: "subj-linear", 
+        title: "David Austin: Understanding Linear Algebra (Interactive)", 
+        url: "https://understandinglinearalgebra.org/", 
+        type: "link" 
+    },
 
 
         
