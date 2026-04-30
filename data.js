@@ -211,7 +211,43 @@ const DEFAULT_DB = {
             title: "Additional Text Extraction", 
             url: "https://drive.google.com/drive/folders/1ofer5HDQoqTFGdOJD4WQWl_nRiiDHfZO", 
             type: "link" 
-        }
+        },
+        // Add these within the resources array of your DEFAULT_DB
+    { 
+        id: "res-java-helsinki", 
+        subjectId: "subj-oop", 
+        title: "University of Helsinki: Java Programming II (MOOC.fi)", 
+        url: "https://java-programming.mooc.fi/", 
+        type: "link" 
+    },
+    { 
+        id: "res-java-refactoring", 
+        subjectId: "subj-oop", 
+        title: "Refactoring.Guru: Java Design Patterns", 
+        url: "https://refactoring.guru/design-patterns/java", 
+        type: "link" 
+    },
+    { 
+        id: "res-java-duke", 
+        subjectId: "subj-oop", 
+        title: "Duke University: OOP in Java", 
+        url: "https://www.coursera.org/specializations/object-oriented-programming-java", 
+        type: "link" 
+    },
+    { 
+        id: "res-java-cave", 
+        subjectId: "subj-oop", 
+        title: "Cave of Programming: Advanced Java", 
+        url: "https://www.youtube.com/playlist?list=PL47E2EAB50F396894", 
+        type: "link" 
+    },
+    { 
+        id: "res-java-effective", 
+        subjectId: "subj-oop", 
+        title: "Effective Java (Joshua Bloch) Reference", 
+        url: "https://github.com/jbloch/effective-java-3e-source-code", 
+        type: "link" 
+    }
     ]
 };
 
