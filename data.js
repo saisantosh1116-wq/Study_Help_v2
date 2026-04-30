@@ -100,7 +100,7 @@ const DEFAULT_DB = {
                 { id: "adm-all", title: "Chapter 9: Ayurveda", status: "pending", notes: "" },
                 { id: "adm-all", title: "Chapter 10 : Indian Calendar Systems", status: "pending", notes: "" },
                 { id: "adm-all", title: "Chapter 11: In the mirror of Culture ", status: "pending", notes: "" },
-                { id: "adm-all", title: "Chapter 12: Revisiting Indian Historiography", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 12: Revisiting Indian Historiography", status: "pending", notes: "" }
             ]
         }
     ],
