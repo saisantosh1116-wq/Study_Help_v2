@@ -25,6 +25,18 @@ const DEFAULT_DB = {
                 { id: "oop-12", title: "12. File Handling", status: "pending", notes: "" }
             ]
         },
+
+
+    {
+        id: "subj-misc",
+        name: "Miscellaneous",
+        courseCode: "GEN-101",
+        examDate: "2099-11-01", // Format: YYYY-MM-DD
+        syllabus: [
+            { id: "misc-1", title: "General Notes", status: "pending", notes: "" }
+        ]
+    },
+        
         {
             id: "subj-linear",
             name: "Linear Algebra",
