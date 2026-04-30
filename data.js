@@ -95,76 +95,34 @@ const DEFAULT_DB = {
     assignments: [
         { id: "a_1", title: "Discrete Mathematics - Class Test", subjectId: "subj-math", dueDate: "2026-05-04" },
         { id: "a_2", title: "Glimpses of Glorious India - MaOm", subjectId: "subj-adm", dueDate: "2026-05-06" },
-        { id: "a_3", title: "GGI - Rough Book Submission", subjectId: "subj-adm", dueDate: "2026-05-07" },
+        { id: "a_3", title: " Rough Book Submission", subjectId: "subj-adm", dueDate: "2026-05-07" },
         { id: "a_4", title: "Linear Algebra - Class Test", subjectId: "subj-linear", dueDate: "2026-05-11" }
     ],
     resources: [
         // Add these within the resources array of your DEFAULT_DB
     // --- START OF DRIVE RESOURCES ---
     
-    // JAVA OOP (subj-oop)
-    { 
-        id: "res-oop-notes-1", 
-        subjectId: "subj-oop", 
-        title: "OOP Module 1 & 2 Comprehensive Notes", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
-        type: "link" 
-    },
-    { 
-        id: "res-oop-question-bank", 
-        subjectId: "subj-oop", 
-        title: "Java OOP Question Bank & PYQs", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
-        type: "link" 
-    },
-
-    // LINEAR ALGEBRA (subj-linear)
-    { 
-        id: "res-lin-notes-full", 
-        subjectId: "subj-linear", 
-        title: "Linear Algebra - All Units Detailed Notes", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
-        type: "link" 
-    },
-    { 
-        id: "res-lin-solved-problems", 
-        subjectId: "subj-linear", 
-        title: "Solved Problems: Eigenvalues & Transformations", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
-        type: "link" 
-    },
+    
 
     // DISCRETE MATHEMATICS (subj-math)
     { 
         id: "res-math-logic-set", 
         subjectId: "subj-math", 
-        title: "Discrete Math: Logic, Sets & Proofs Notes", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        title: "Textbook", 
+        url: "https://drive.google.com/drive/folders/1wxSYfk7BoiGL5pQQjCkCDKM8tTwoONMn", 
         type: "link" 
     },
-    { 
-        id: "res-math-graph-theory", 
-        subjectId: "subj-math", 
-        title: "Graph Theory & Optimization Module", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
-        type: "link" 
-    },
+    
 
     // MODERN PHYSICS (subj-physics)
     { 
         id: "res-phy-quantum-notes", 
         subjectId: "subj-physics", 
-        title: "Modern Physics: Quantum & Relativity Notes", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
+        title: "Notes", 
+        url: "https://drive.google.com/drive/folders/1KYtBzDTpyGGG_SDYOeth4hLxqWZlnXDo", 
         type: "link" 
     },
-    { 
-        id: "res-phy-formula-sheet", 
-        subjectId: "subj-physics", 
-        title: "Physics Formula Sheet for End-Sem", 
-        url: "https://drive.google.com/uc?export=view&id=ID_HERE", 
-        type: "link" 
-    },
+    
     
     // --- END OF DRIVE RESOURCES ---
 
