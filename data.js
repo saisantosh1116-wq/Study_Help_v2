@@ -88,7 +88,19 @@ const DEFAULT_DB = {
             courseCode: "22ADM111",
             examDate: "2026-05-30",
             syllabus: [
-                { id: "adm-all", title: "All 12 Chapters", status: "pending", notes: "" }
+                { id: "adm-all", title: "Chapter 1: Vision and Mission of IKS", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 2: Fear Chapter", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 3: Chanakya", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 4: Bhagavadgita - Soldier to...", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 5: Lessons in Yoga", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 6: Ultimate Reality: Different Perspectives", status: "pending", notes: "" },
+                
+                { id: "adm-all", title: "Chapter 7: Weaving a New Future usign Ancient threads", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 8: Legacy of Knowledge and Learning in India", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 9: Ayurveda", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 10 : Indian Calendar Systems", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 11: In the mirror of Culture ", status: "pending", notes: "" },
+                { id: "adm-all", title: "Chapter 12: Revisiting Indian Historiography", status: "pending", notes: "" },
             ]
         }
     ],
@@ -99,11 +111,8 @@ const DEFAULT_DB = {
         { id: "a_4", title: "Linear Algebra - Class Test", subjectId: "subj-linear", dueDate: "2026-05-11" }
     ],
     resources: [
-        // Add these within the resources array of your DEFAULT_DB
-    // --- START OF DRIVE RESOURCES ---
+       
     
-    
-
     // DISCRETE MATHEMATICS (subj-math)
     { 
         id: "res-math-logic-set", 
@@ -113,13 +122,12 @@ const DEFAULT_DB = {
         type: "link" 
     },
     
-
     // MODERN PHYSICS (subj-physics)
     { 
         id: "res-phy-quantum-notes", 
         subjectId: "subj-physics", 
         title: "Notes", 
-        url: "https://drive.google.com/drive/folders/1KYtBzDTpyGGG_SDYOeth4hLxqWZlnXDo", 
+        url: "https://drive.google.com/drive/folders/1KYtBzDTpyGGG_SDYOeth4hLxqWZlnXDo?usp=sharing", 
         type: "link" 
     },
     
