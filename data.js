@@ -117,7 +117,7 @@ const DEFAULT_DB = {
         id: "res-math-logic-set", 
         subjectId: "subj-math", 
         title: "Textbook", 
-        url: "https://drive.google.com/drive/folders/1wxSYfk7BoiGL5pQQjCkCDKM8tTwoONMn", 
+        url: "https://drive.google.com/drive/folders/1wxSYfk7BoiGL5pQQjCkCDKM8tTwoONMn?usp=sharing", 
         type: "link" 
     },
     
@@ -129,7 +129,13 @@ const DEFAULT_DB = {
         url: "https://drive.google.com/drive/folders/1KYtBzDTpyGGG_SDYOeth4hLxqWZlnXDo?usp=sharing", 
         type: "link" 
     },
-    
+    { 
+        id: "res-linear-notes", 
+        subjectId: "subj-linear", 
+        title: "Notes", 
+        url: "https://drive.google.com/drive/folders/1WKsZQZy7-ijDs8IxQGMRlW0O8jcqS9oZ?usp=sharing", 
+        type: "link" 
+    },
     
     // --- END OF DRIVE RESOURCES ---
 
