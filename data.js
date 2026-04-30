@@ -154,7 +154,42 @@ const DEFAULT_DB = {
         type: "link" 
     },
 
-
+    // Add these within the resources array of your DEFAULT_DB
+    { 
+        id: "res-phy-susskind", 
+        subjectId: "subj-physics", 
+        title: "Leonard Susskind: Modern Physics - Quantum Mechanics", 
+        url: "https://www.youtube.com/playlist?list=PLpGHT1n4-mAtwjv8eN_Ssy9Iatvlp9K-0", 
+        type: "link" 
+    },
+    { 
+        id: "res-phy-relativity", 
+        subjectId: "subj-physics", 
+        title: "Stanford/Coursera: Understanding Einstein - Special Relativity", 
+        url: "https://www.coursera.org/learn/einstein-relativity", 
+        type: "link" 
+    },
+    { 
+        id: "res-phy-tipler", 
+        subjectId: "subj-physics", 
+        title: "Tipler & Llewellyn: Modern Physics (Textbook)", 
+        url: "https://web.pdx.edu/~pmoeck/books/Tipler_Llewellyn.pdf", 
+        type: "link" 
+    },
+    { 
+        id: "res-phy-zwiebach", 
+        subjectId: "subj-physics", 
+        title: "Barton Zwiebach: MIT 8.04 Quantum Physics I", 
+        url: "https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/", 
+        type: "link" 
+    },
+    { 
+        id: "res-phy-geneva", 
+        subjectId: "subj-physics", 
+        title: "University of Geneva: Particle Physics - An Introduction", 
+        url: "https://www.coursera.org/learn/particle-physics", 
+        type: "link" 
+    },
         
         { 
             id: "r_1", 
