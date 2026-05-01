@@ -5,35 +5,35 @@
 }
 
 :root {
-    /* LIGHT MODE: True Glassmorphism with Custom Image */
-    /* FIX 1: Added linear-gradient to wash out the background image to 85% white */
-    --bg-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('background.jpg'); 
-    --bg-base: #e2e8f0; 
+    /* LIGHT MODE: Balanced Frosted Slate (Reduced Glare) */
     
-    /* FIX 2: Solidified the glass. 90% opaque white prevents background bleed */
-    --surface: rgba(255, 255, 255, 0.90); 
+    /* 1. The Wash: Shifted from blinding white to a cool, soft slate-gray */
+    --bg-image: linear-gradient(rgba(226, 232, 240, 0.85), rgba(226, 232, 240, 0.85)), url('background.jpg'); 
+    --bg-base: #f1f5f9; 
     
-    /* FIX 3: Darkened the border so the cards have a defined edge against the bright background */
-    --border: rgba(0, 0, 0, 0.15); 
+    /* 2. The Glass: Dropped raw whiteness to 75% so the cool gray underneath softens it */
+    --surface: rgba(255, 255, 255, 0.75); 
     
-    /* Crisp dark text to contrast with the glass */
+    /* 3. The Edges: Softened the borders so they don't look overly sharp */
+    --border: rgba(15, 23, 42, 0.1); 
+    
+    /* Crisp dark text */
     --text-primary: #0f172a; 
-    --text-secondary: #334155; 
+    --text-secondary: #475569; 
     
-    /* Professional Blue Accent */
+    /* Professional Accents */
     --accent: #2563eb; 
     --danger: #ef4444;
     --warning: #f59e0b;
     
-    /* Neutral shadow to make the glass float */
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.8);
-    --blur: blur(20px); 
+    /* 4. The Depth: Increased the blur to 24px to compensate for the lower opacity, keeping it highly readable */
+    --shadow: 0 8px 32px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255,255,255,0.6);
+    --blur: blur(24px); 
 
-    /* Dynamic Overlays & Inputs for Contrast */
-    --modal-overlay: rgba(255, 255, 255, 0.5); /* Bright frosted glass overlay */
-    --input-bg: rgba(255, 255, 255, 0.8); /* Solidified input background */
+    /* Dynamic Overlays & Inputs */
+    --modal-overlay: rgba(226, 232, 240, 0.6); 
+    --input-bg: rgba(255, 255, 255, 0.6); 
 }
-
 [data-theme="dark"] {
     /* DARK MODE: Sleek Knight / Cyberpunk */
     --bg-image: none; /* Ensures the image disappears in Dark Mode */
