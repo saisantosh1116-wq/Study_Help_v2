@@ -314,6 +314,79 @@
     text-shadow: 0 0 5px var(--neon-cyan);
 }
 
+/* === MOBILE OPTIMIZATION (EASY ACCESS TERMINAL) === */
+@media (max-width: 850px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto; /* Unlock scrolling */
+    }
+
+    /* Stack Panels */
+    .left-panel {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid var(--neon-cyan);
+        padding: 20px;
+    }
+
+    .right-panel {
+        flex: none;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    /* Reformat HUDs to fit narrow screens */
+    .top-dashboard, .stats-hud {
+        flex-direction: column;
+        gap: 20px;
+        clip-path: none; /* Disable angular cuts on mobile */
+        border-radius: 10px;
+    }
+
+    .info-center, .calendar-mini {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .cal-header {
+        text-align: center;
+    }
+
+    /* Stack Pending & Archive sections */
+    .split-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .split-left {
+        border-right: none;
+        border-bottom: 1px dashed rgba(255,255,255,0.1);
+        padding-right: 0;
+        padding-bottom: 10px;
+    }
+
+    .tracker-box {
+        clip-path: none;
+        border-radius: 8px;
+    }
+
+    /* Fix Modal for mobile */
+    .modal-content {
+        width: 95%;
+        clip-path: none;
+        border-radius: 12px;
+    }
+}
+
+
+
+
+        
     </style>
 </head>
 <body>
