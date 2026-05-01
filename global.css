@@ -5,35 +5,36 @@
 }
 
 :root {
-    /* LIGHT MODE: Balanced Frosted Slate (Reduced Glare) */
+    /* LIGHT MODE: "E-Ink / Soft Paper" (Anti-Flashbang) */
     
-    /* 1. The Wash: Shifted from blinding white to a cool, soft slate-gray */
-    --bg-image: linear-gradient(rgba(226, 232, 240, 0.85), rgba(226, 232, 240, 0.85)), url('background.jpg'); 
-    --bg-base: #f1f5f9; 
+    /* 1. The Wash: Heavy, muted gray-blue to absorb the monitor backlight glare */
+    --bg-image: linear-gradient(rgba(148, 163, 184, 0.85), rgba(148, 163, 184, 0.85)), url('background.jpg'); 
+    --bg-base: #94a3b8; 
     
-    /* 2. The Glass: Dropped raw whiteness to 75% so the cool gray underneath softens it */
-    --surface: rgba(255, 255, 255, 0.75); 
+    /* 2. The Glass: Soft off-white (Slate 100) instead of pure white. */
+    --surface: rgba(241, 245, 249, 0.85); 
     
-    /* 3. The Edges: Softened the borders so they don't look overly sharp */
-    --border: rgba(15, 23, 42, 0.1); 
+    /* 3. The Edges: Slightly darker border for contrast without harshness */
+    --border: rgba(15, 23, 42, 0.15); 
     
-    /* Crisp dark text */
+    /* Deep, highly legible text */
     --text-primary: #0f172a; 
-    --text-secondary: #475569; 
+    --text-secondary: #334155; 
     
-    /* Professional Accents */
-    --accent: #2563eb; 
-    --danger: #ef4444;
-    --warning: #f59e0b;
+    /* Accents - Darkened slightly for perfect contrast on the soft paper background */
+    --accent: #1d4ed8; 
+    --danger: #dc2626;
+    --warning: #d97706;
     
-    /* 4. The Depth: Increased the blur to 24px to compensate for the lower opacity, keeping it highly readable */
-    --shadow: 0 8px 32px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255,255,255,0.6);
-    --blur: blur(24px); 
+    /* 4. The Depth: Neutral shadows to anchor the floating cards */
+    --shadow: 0 8px 32px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    --blur: blur(20px); 
 
-    /* Dynamic Overlays & Inputs */
-    --modal-overlay: rgba(226, 232, 240, 0.6); 
-    --input-bg: rgba(255, 255, 255, 0.6); 
+    /* Overlays & Inputs */
+    --modal-overlay: rgba(148, 163, 184, 0.7); 
+    --input-bg: rgba(248, 250, 252, 0.7); 
 }
+
 [data-theme="dark"] {
     /* DARK MODE: Sleek Knight / Cyberpunk */
     --bg-image: none; /* Ensures the image disappears in Dark Mode */
