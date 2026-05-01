@@ -165,3 +165,46 @@ body {
     justify-content: center; 
     display: none;
 }   
+
+
+/*Phone screeeeeeenssssss */
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+        align-items: flex-start; /* Allows scrolling from the top */
+    }
+
+    .app-container {
+        height: auto;
+        min-height: 95vh;
+        padding: 1rem;
+    }
+
+    /* Stack the Navigation */
+    .top-nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%; /* Make buttons tap-friendly */
+    }
+
+    /* Stack the Grid */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-cards {
+        grid-template-columns: 1fr;
+    }
+}
