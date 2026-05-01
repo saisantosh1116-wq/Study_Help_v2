@@ -198,20 +198,7 @@ const DEFAULT_DB = {
         url: "https://discrete.openmathbooks.org/", 
         type: "link" 
     },
-    { 
-        id: "res-dm-bazett", 
-        subjectId: "subj-math", 
-        title: "Dr. Trefor Bazett: Discrete Math Full Course", 
-        url: "https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKk9", 
-        type: "link" 
-    },
-    { 
-        id: "res-dm-brehm", 
-        subjectId: "subj-math", 
-        title: "Kimberly Brehm: Discrete Math I & II", 
-        url: "https://www.youtube.com/playlist?list=PLl-gb0E4MII28GykmtuAfLiVV6_O6G82e", 
-        type: "link" 
-    },
+   
     { 
         id: "res-dm-gfg", 
         subjectId: "subj-math", 
@@ -225,7 +212,7 @@ const DEFAULT_DB = {
         id: "res-la-3b1b", 
         subjectId: "subj-linear", 
         title: "3Blue1Brown: Essence of Linear Algebra", 
-        url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MfeQ2lzNVdqzBWDXle6", 
+        url: "https://youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&si=sVizG-iyizfpX8pW", 
         type: "link" 
     },
     { 
@@ -326,13 +313,7 @@ const DEFAULT_DB = {
         url: "https://refactoring.guru/design-patterns/java", 
         type: "link" 
     },
-    { 
-        id: "res-java-duke", 
-        subjectId: "subj-oop", 
-        title: "Duke University: OOP in Java", 
-        url: "https://www.coursera.org/specializations/object-oriented-programming-java", 
-        type: "link" 
-    },
+    
     { 
         id: "res-java-cave", 
         subjectId: "subj-oop", 
