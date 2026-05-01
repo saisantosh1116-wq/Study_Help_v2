@@ -57,11 +57,20 @@
     </style>
 </head>
 <body>
-    <header class="top-nav">
-        <h1 class="nexus-brand">PROJECT NEXUS</h1>
-        <button id="theme-toggle" class="nexus-btn">Toggle Theme</button>
-    </header>
-
+<!-- Top Navigation -->
+        <header class="top-nav">
+            <div class="logo">
+                <h1>NEXUS</h1>
+                <span class="badge">S2 CSE Master</span>
+            </div>
+            <div class="controls">
+                <!-- NEW: Launch Terminal Button -->
+                <button onclick="window.location.href='terminal.html'" class="btn glossy" style="background: #0a0f1e; color: #00f3ff; border: 1px solid #00f3ff; font-family: monospace;">_> Terminal</button>
+                
+                <button id="sync-btn" class="btn primary-btn glossy"> Sync Updates</button>
+                <button id="reset-btn" class="btn danger-btn glossy"> Factory Reset</button>
+            </div>
+        </header>
     <main class="page-container home-grid">
         <!-- Subjects Grid -->
         <section class="subjects-section" id="subject-grid-container">
