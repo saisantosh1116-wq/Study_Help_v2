@@ -6,6 +6,20 @@ const DEFAULT_DB = {
     dailyChecklist: [],
     subjects: [
         {
+            id: "subj-uid",
+            name: "User Interface Design",
+            courseCode: "23CSE113", 
+            examDate: "2026-05-20", 
+            syllabus: [
+                { id: "uid-1", title: "Unit 1: HTML5 Structure & Semantics", status: "pending", notes: "" },
+                { id: "uid-2", title: "Unit 2: CSS3 Styling, Flexbox & Grid", status: "pending", notes: "" },
+                { id: "uid-3", title: "Unit 3: JavaScript Fundamentals", status: "pending", notes: "" },
+                { id: "uid-4", title: "Unit 4: DOM Manipulation & Events", status: "pending", notes: "" },
+                { id: "uid-5", title: "Unit 5: Responsive Web Design", status: "pending", notes: "" },
+                { id: "uid-6", title: "Unit 6: UI/UX Principles & Prototyping", status: "pending", notes: "" }
+            ]
+        },
+        {
             id: "subj-oop",
             name: "Object Oriented Programming (Java)",
             courseCode: "23CSE111",
@@ -110,6 +124,36 @@ const DEFAULT_DB = {
         { id: "a_4", title: "Linear Algebra - Class Test", subjectId: "subj-linear", dueDate: "2026-05-11" }
     ],
     resources: [
+
+        // --- USER INTERFACE DESIGN (subj-uid) ---
+    { 
+        id: "res-uid-w3schools", 
+        subjectId: "subj-uid", 
+        title: "W3Schools: Comprehensive Web Tutorials", 
+        url: "https://www.w3schools.com/", 
+        type: "link" 
+    },
+    { 
+        id: "res-uid-codepen", 
+        subjectId: "subj-uid", 
+        title: "CodePen: Online HTML/CSS/JS Editor environment", 
+        url: "https://codepen.io/pen/", 
+        type: "link" 
+    },
+    { 
+        id: "res-uid-jsfiddle", 
+        subjectId: "subj-uid", 
+        title: "JSFiddle: Live Code Playground & Tester", 
+        url: "https://jsfiddle.net/", 
+        type: "link" 
+    },
+    { 
+        id: "res-uid-mdn", 
+        subjectId: "subj-uid", 
+        title: "MDN Web Docs (The gold standard for Web Dev)", 
+        url: "https://developer.mozilla.org/en-US/", 
+        type: "link" 
+    },
        
     
     // DISCRETE MATHEMATICS (subj-math)
